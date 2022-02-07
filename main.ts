@@ -6,8 +6,12 @@ strip.setPixelColor(3, neopixel.colors(NeoPixelColors.Yellow))
 strip.show()
 basic.forever(function () {
     if (maqueen.readPatrol(maqueen.Patrol.PatrolLeft) == 0) {
-        basic.showNumber(0)
+        maqueen.motorRun(maqueen.Motors.M1, maqueen.Dir.CCW, 100)
+        maqueen.motorRun(maqueen.Motors.M2, maqueen.Dir.CW, 100)
+    } else if (maqueen.readPatrol(maqueen.Patrol.PatrolRight) == 0) {
+        maqueen.motorRun(maqueen.Motors.M1, maqueen.Dir.CW, 100)
+        maqueen.motorRun(maqueen.Motors.M2, maqueen.Dir.CCW, 100)
     } else {
-        basic.showNumber(1)
+        maqueen.motorRun(maqueen.Motors.All, maqueen.Dir.CW, 20)
     }
 })
